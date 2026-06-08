@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>InAmigos Foundation — Uniting Minds For Change</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d1f14;
+  --green:#1d6b3e;
+  --green-mid:#2d9b5e;
+  --green-pale:#e6f4ec;
+  --gold:#e8a020;
+  --cream:#faf7f2;
+  --white:#ffffff;
+  --gray:#5a6672;
+  --border:#d8e8df;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 4rem;
+  background:rgba(250,247,242,.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--green);letter-spacing:-.5px}
+.logo em{font-style:italic;color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--gray);text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-tag{font-size:.72rem;background:var(--green-pale);color:var(--green);padding:.3rem .8rem;border-radius:50px;font-weight:600;letter-spacing:.5px;border:1px solid rgba(29,107,62,.15)}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  padding:9rem 4rem 5rem;gap:4rem;
+  position:relative;background:var(--cream);
+}
+.hero::before{
+  content:'';position:absolute;top:0;right:0;
+  width:50%;height:100%;
+  background:var(--green-pale);z-index:0;
+}
+.hero-left{position:relative;z-index:1}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--green);margin-bottom:1.5rem;
+}
+.hero-eyebrow span{display:inline-block;width:28px;height:2px;background:var(--green)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:900;line-height:1.05;color:var(--ink)}
+h1 em{font-style:italic;color:var(--green)}
+.hero-sub{font-size:1.05rem;line-height:1.75;color:var(--gray);max-width:480px;margin-top:1.4rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.4rem}
+
+/* BUTTONS — all plain, no links */
+.btn-fill{
+  cursor:pointer;border:none;font-family:inherit;
+  background:var(--green);color:#fff;
+  padding:.85rem 2rem;border-radius:6px;
+  font-weight:600;font-size:.9rem;
+  transition:background .2s,transform .15s;
+}
+.btn-fill:hover{background:#155530;transform:translateY(-1px)}
+.btn-ghost{
+  cursor:pointer;font-family:inherit;
+  background:transparent;
+  border:1.5px solid var(--ink);color:var(--ink);
+  padding:.85rem 2rem;border-radius:6px;
+  font-weight:600;font-size:.9rem;
+  text-decoration:none;transition:border-color .2s,color .2s;
+  display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.btn-gold{
+  cursor:pointer;border:none;font-family:inherit;
+  background:var(--gold);color:var(--ink);
+  padding:.9rem 2.2rem;border-radius:6px;
+  font-weight:700;font-size:.95rem;
+  transition:opacity .2s,transform .15s;
+}
+.btn-gold:hover{opacity:.85;transform:translateY(-1px)}
+
+/* HERO RIGHT */
+.hero-right{position:relative;z-index:1}
+.hero-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hero-img-grid img{width:100%;border-radius:12px;object-fit:cover}
+.hero-img-grid img:first-child{height:280px;grid-column:span 2}
+.hero-img-grid img:last-child{height:170px;grid-column:span 2}
+
+/* STATS BAR */
+.float-stats{
+  display:flex;flex-wrap:wrap;gap:1.5rem;
+  padding:2.5rem 4rem;background:var(--green);
+}
+.fstat{text-align:center;flex:1;min-width:140px}
+.fstat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--gold)}
+.fstat-label{font-size:.8rem;color:rgba(255,255,255,.7);font-weight:500;margin-top:.2rem;letter-spacing:.5px}
+
+/* SECTIONS */
+.section{padding:6rem 4rem}
+.section-alt{background:var(--white)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--green);margin-bottom:1rem;
+}
+.eyebrow span{display:inline-block;width:22px;height:1.5px;background:var(--green)}
+h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;line-height:1.15;color:var(--ink)}
+.lead{font-size:1.05rem;line-height:1.75;color:var(--gray);max-width:580px;margin-top:.9rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3.5rem}
+.about-img{width:100%;height:440px;object-fit:cover;border-radius:16px}
+.cert-list{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.cert{background:var(--green-pale);color:var(--green);border:1px solid rgba(29,107,62,.2);padding:.35rem 1rem;border-radius:50px;font-size:.75rem;font-weight:600}
+.founder-box{display:flex;align-items:center;gap:1rem;margin-top:2rem;padding:1.2rem;border:1px solid var(--border);border-radius:10px;background:var(--cream)}
+.founder-icon{width:46px;height:46px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.founder-name{font-weight:700;font-size:.95rem;color:var(--ink)}
+.founder-title{font-size:.8rem;color:var(--gray);margin-top:.15rem}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3.5rem}
+.pcard{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:box-shadow .25s,transform .25s;background:var(--white)}
+.pcard:hover{box-shadow:0 12px 36px rgba(0,0,0,.1);transform:translateY(-4px)}
+.pcard-img{width:100%;height:200px;object-fit:cover;display:block}
+.pcard-body{padding:1.6rem}
+.pcard-tag{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--green)}
+.pcard-body h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--ink);margin-top:.35rem}
+.pcard-body p{font-size:.9rem;color:var(--gray);line-height:1.65;margin-top:.5rem}
+
+/* IMPACT */
+.impact{background:var(--ink);color:#fff}
+.impact .eyebrow{color:var(--gold)}
+.impact .eyebrow span{background:var(--gold)}
+.impact h2{color:#fff}
+.impact .lead{color:rgba(255,255,255,.6)}
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:3.5rem}
+.icard{padding:2rem 1.5rem;text-align:center;border:1px solid rgba(255,255,255,.1);border-radius:14px;transition:background .2s}
+.icard:hover{background:rgba(255,255,255,.06)}
+.icard-icon{font-size:2.2rem;margin-bottom:.8rem}
+.icard-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold)}
+.icard-label{font-size:.85rem;color:rgba(255,255,255,.65);margin-top:.4rem;line-height:1.5}
+
+/* GALLERY */
+.gallery-section{background:var(--white);padding:6rem 4rem}
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px;gap:1rem;margin-top:3rem}
+.gmosaic-item{border-radius:12px;overflow:hidden;position:relative;cursor:pointer}
+.gmosaic-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gmosaic-item:hover img{transform:scale(1.05)}
+.gmosaic-item .gcap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(13,31,20,.8));color:#fff;padding:1rem;font-size:.8rem;font-weight:600;opacity:0;transition:opacity .3s}
+.gmosaic-item:hover .gcap{opacity:1}
+.gmosaic-item.large{grid-column:span 2;grid-row:span 2}
+.gallery-row2{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.gallery-row2 .gmosaic-item{height:180px}
+
+/* AWARENESS CARDS */
+.awareness-strip{background:var(--green-pale);padding:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.aw-card{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem;background:var(--white);border-radius:12px;border:1px solid var(--border)}
+.aw-img{width:80px;height:80px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.aw-card h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--green);font-weight:700}
+.aw-card p{font-size:.82rem;color:var(--gray);line-height:1.55;margin-top:.3rem}
+
+/* QUOTE */
+.quote-section{background:var(--green-pale);padding:5rem 4rem;text-align:center}
+.quote-mark{font-size:4rem;color:var(--green);opacity:.3;line-height:1;font-family:Georgia,serif}
+.quote-text{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-style:italic;color:var(--green);max-width:700px;margin:0 auto;line-height:1.5}
+.quote-attr{font-size:.85rem;color:var(--gray);margin-top:1.2rem;font-weight:500}
+
+/* CTA */
+.cta-section{background:var(--white);padding:7rem 4rem;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+.cta-left{max-width:560px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
+.social-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem}
+.social-pill{font-size:.78rem;font-weight:600;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.65);padding:.4rem 1.1rem;border-radius:50px;text-decoration:none;transition:background .2s,color .2s}
+.social-pill:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.cta-aside{background:var(--green-pale);border:1px solid rgba(29,107,62,.2);border-radius:16px;padding:2rem;min-width:260px}
+.cta-aside h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--green);margin-bottom:1rem}
+.cta-contact-item{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.8rem}
+.cta-contact-item .ci{font-size:1rem}
+.cta-contact-item p{font-size:.85rem;color:var(--gray);line-height:1.5}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.45);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer .f-logo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:rgba(255,255,255,.7)}
+.footer-social{display:flex;gap:.8rem;flex-wrap:wrap}
+.footer-social a{font-size:.78rem;font-weight:600;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.65);padding:.35rem 1rem;border-radius:50px;text-decoration:none;transition:background .2s,color .2s}
+.footer-social a:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links,.nav-tag{display:none}
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2.5rem}
+  .hero::before{display:none}
+  .hero-img-grid img:first-child{height:200px}
+  .hero-img-grid img:last-child{height:130px}
+  .float-stats,.section,.section-alt,.cta-section,.quote-section,.gallery-section,.awareness-strip{padding:3rem 1.5rem}
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-img{height:280px}
+  .projects-grid{grid-template-columns:1fr}
+  .gallery-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gmosaic-item.large{grid-column:span 2;height:200px}
+  .gmosaic-item{height:160px}
+  .gallery-row2{grid-template-columns:1fr}
+  .awareness-strip{grid-template-columns:1fr}
+  .cta-section{flex-direction:column}
+  footer{flex-direction:column;align-items:flex-start;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">In<em>Amigos</em> Foundation</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#join">Volunteer</a></li>
+  </ul>
+  <span class="nav-tag">Section 8 Registered NGO · Est. 2020</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span></span> #InAmigos &nbsp;·&nbsp; #TogetherWeCan</div>
+    <h1>Uniting Minds<br/>For <em>Change</em></h1>
+    <p class="hero-sub">We work at the intersection of education, environment, and community welfare — building a more inclusive society one initiative at a time.</p>
+    <div class="hero-btns">
+      <button class="btn-fill">Join the Mission</button>
+      <a href="#projects" class="btn-ghost">Our Projects ↓</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-grid">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format" alt="InAmigos team"/>
+      <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&auto=format" alt="Community work"/>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="float-stats">
+  <div class="fstat"><div class="fstat-num">20K+</div><div class="fstat-label">Trees Planted</div></div>
+  <div class="fstat"><div class="fstat-num">50K+</div><div class="fstat-label">Meals Distributed</div></div>
+  <div class="fstat"><div class="fstat-num">900+</div><div class="fstat-label">Girls Empowered</div></div>
+  <div class="fstat"><div class="fstat-num">50+</div><div class="fstat-label">Animals Fed Daily</div></div>
+  <div class="fstat"><div class="fstat-num">30K+</div><div class="fstat-label">Interns Trained</div></div>
+  <div class="fstat"><div class="fstat-num">28</div><div class="fstat-label">States Reached</div></div>
+</div>
+
+<!-- ABOUT -->
+<section class="section section-alt" id="about">
+  <div class="eyebrow"><span></span> Who We Are</div>
+  <h2>A Grassroots Force<br/>for Good</h2>
+  <div class="about-grid">
+    <img class="about-img" src="https://images.unsplash.com/photo-1593113630400-ea4288922597?w=800&auto=format" alt="Volunteers"/>
+    <div>
+      <p class="lead">InAmigos Foundation is a Section 8 registered non-profit dedicated to improving lives through education, social welfare, environmental conservation, animal welfare, and community development.</p>
+      <p class="lead" style="margin-top:1rem;">Founded on <strong>September 23, 2020</strong> by <strong>Mr. Govind Shukla</strong>, we have grown from a small volunteer circle into a structured organisation running six impactful programmes across India.</p>
+      <div class="cert-list">
+        <span class="cert">Section 8 Registered</span>
+        <span class="cert">80G &amp; 12A Certified</span>
+        <span class="cert">CSR-1 Approved</span>
+        <span class="cert">ISO 9001:2015</span>
+        <span class="cert">NITI Aayog Listed</span>
+        <span class="cert">NGO Darpan</span>
+      </div>
+      <div class="founder-box">
+        <div class="founder-icon">👤</div>
+        <div>
+          <div class="founder-name">Mr. Govind Shukla</div>
+          <div class="founder-title">Founder &amp; CEO, InAmigos Foundation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="eyebrow"><span></span> What We Do</div>
+  <h2>Ongoing Projects</h2>
+  <div class="projects-grid">
+    <div class="pcard">
+      <img class="pcard-img" src="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=700&auto=format" alt="Tree Plantation"/>
+      <div class="pcard-body"><div class="pcard-tag">Environment</div><h3>Project Prakriti</h3><p>Large-scale tree plantation drives and environmental sustainability campaigns for a greener tomorrow.</p></div>
+    </div>
+    <div class="pcard">
+      <img class="pcard-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=700&auto=format" alt="Food Distribution"/>
+      <div class="pcard-body"><div class="pcard-tag">Social Welfare</div><h3>Project Seva</h3><p>Regular food drives and essential support systems for underprivileged communities across the region.</p></div>
+    </div>
+    <div class="pcard">
+      <img class="pcard-img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&auto=format" alt="Women Empowerment"/>
+      <div class="pcard-body"><div class="pcard-tag">Empowerment</div><h3>Project Udaan</h3><p>Awareness campaigns and skill-building workshops to empower girls and women towards independence.</p></div>
+    </div>
+    <div class="pcard">
+      <img class="pcard-img" src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&auto=format" alt="Animal Welfare"/>
+      <div class="pcard-body"><div class="pcard-tag">Animal Welfare</div><h3>Project Jeev</h3><p>Daily feeding, medical aid, and care for stray and injured animals in urban neighbourhoods.</p></div>
+    </div>
+    <div class="pcard">
+      <img class="pcard-img" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&auto=format" alt="Education"/>
+      <div class="pcard-body"><div class="pcard-tag">Education</div><h3>Project Bachpanshala</h3><p>Quality education and a nurturing learning environment for underprivileged children across communities.</p></div>
+    </div>
+    <div class="pcard">
+      <img class="pcard-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&auto=format" alt="Skill Development"/>
+      <div class="pcard-body"><div class="pcard-tag">Skill Development</div><h3>Project Vikas</h3><p>Enhancing youth employability through digital literacy and professional training. Over 30,000 interns trained.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section impact" id="impact">
+  <div class="eyebrow"><span></span> By The Numbers</div>
+  <h2>Our Collective Impact</h2>
+  <p class="lead">Every volunteer hour and every rupee donated translates into visible, measurable change across 28 states.</p>
+  <div class="impact-grid">
+    <div class="icard"><div class="icard-icon">🌱</div><div class="icard-num">20,000+</div><div class="icard-label">Trees Planted</div></div>
+    <div class="icard"><div class="icard-icon">🍲</div><div class="icard-num">50,000+</div><div class="icard-label">Meals Distributed</div></div>
+    <div class="icard"><div class="icard-icon">👩</div><div class="icard-num">900+</div><div class="icard-label">Girls Empowered</div></div>
+    <div class="icard"><div class="icard-icon">🐾</div><div class="icard-num">50+</div><div class="icard-label">Animals Fed Daily</div></div>
+    <div class="icard"><div class="icard-icon">📚</div><div class="icard-num">30,000+</div><div class="icard-label">Interns Trained</div></div>
+    <div class="icard"><div class="icard-icon">🏘️</div><div class="icard-num">28</div><div class="icard-label">States of Presence</div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="eyebrow"><span></span> Our Work in Action</div>
+  <h2>Moments of Change</h2>
+  <p class="lead">A glimpse into the ground-level work our volunteers do every day across communities in India.</p>
+  <div class="gallery-mosaic">
+    <div class="gmosaic-item large">
+      <img src="https://images.unsplash.com/photo-1593113630400-ea4288922597?w=900&auto=format" alt="Volunteers"/>
+      <div class="gcap">🤝 Community Service Drive</div>
+    </div>
+    <div class="gmosaic-item">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&auto=format" alt="Children education"/>
+      <div class="gcap">📚 Bachpanshala — Education Drive</div>
+    </div>
+    <div class="gmosaic-item">
+      <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500&auto=format" alt="Animal welfare"/>
+      <div class="gcap">🐾 Project Jeev — Animal Care</div>
+    </div>
+    <div class="gmosaic-item">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&auto=format" alt="Women empowerment"/>
+      <div class="gcap">👩 Project Udaan — Women Empowerment</div>
+    </div>
+    <div class="gmosaic-item">
+      <img src="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=500&auto=format" alt="Tree plantation"/>
+      <div class="gcap">🌿 Project Prakriti — Tree Plantation</div>
+    </div>
+  </div>
+  <div class="gallery-row2">
+    <div class="gmosaic-item">
+      <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&auto=format" alt="Food distribution"/>
+      <div class="gcap">🍱 Project Seva — Food Distribution</div>
+    </div>
+    <div class="gmosaic-item">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&auto=format" alt="Skill training"/>
+      <div class="gcap">🚀 Project Vikas — Skill Training</div>
+    </div>
+    <div class="gmosaic-item">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format" alt="Volunteer team"/>
+      <div class="gcap">🌟 Our Volunteer Family</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARENESS CARDS -->
+<div class="awareness-strip">
+  <div class="aw-card">
+    <img class="aw-img" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=200&auto=format" alt="Education"/>
+    <div><h4>Education Changes Lives</h4><p>Millions of children lack access to quality education. Project Bachpanshala bridges that gap one child at a time.</p></div>
+  </div>
+  <div class="aw-card">
+    <img class="aw-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=200&auto=format" alt="Hunger"/>
+    <div><h4>No One Should Go Hungry</h4><p>Project Seva runs regular food drives to ensure the underprivileged receive nutritious meals every day.</p></div>
+  </div>
+  <div class="aw-card">
+    <img class="aw-img" src="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=200&auto=format" alt="Environment"/>
+    <div><h4>Our Planet Needs Us</h4><p>Project Prakriti plants trees and drives environmental awareness to protect our planet for future generations.</p></div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote-text">The smallest act of kindness is worth more than the grandest intention.</p>
+  <p class="quote-attr">— Guiding Principle, InAmigos Foundation</p>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="join">
+  <div class="cta-left">
+    <div class="eyebrow"><span></span> Get Involved</div>
+    <h2>Become a<br/>Change Maker</h2>
+    <p class="lead">Join thousands of volunteers and supporters working with us to create lasting, positive impact in communities across India.</p>
+    <div class="cta-btns">
+      <button class="btn-fill">Volunteer Now →</button>
+      <button class="btn-gold">Donate ₹200+</button>
+      <a href="https://inamigosfoundation.org.in" target="_blank" class="btn-ghost">Visit Website</a>
+    </div>
+    <div class="social-row" style="margin-top:1.5rem">
+      <a href="https://www.facebook.com/inamigos.inamigos" target="_blank" style="font-size:.78rem;font-weight:600;border:1px solid var(--border);color:var(--gray);padding:.4rem 1.1rem;border-radius:50px;text-decoration:none;transition:background .2s">Facebook</a>
+      <a href="https://www.instagram.com/inamigos/" target="_blank" style="font-size:.78rem;font-weight:600;border:1px solid var(--border);color:var(--gray);padding:.4rem 1.1rem;border-radius:50px;text-decoration:none">Instagram</a>
+      <a href="https://in.linkedin.com/company/inamigos-foundation" target="_blank" style="font-size:.78rem;font-weight:600;border:1px solid var(--border);color:var(--gray);padding:.4rem 1.1rem;border-radius:50px;text-decoration:none">LinkedIn</a>
+      <a href="https://x.com/inamigosf" target="_blank" style="font-size:.78rem;font-weight:600;border:1px solid var(--border);color:var(--gray);padding:.4rem 1.1rem;border-radius:50px;text-decoration:none">X / Twitter</a>
+    </div>
+  </div>
+  <div class="cta-aside">
+    <h4>Contact Us</h4>
+    <div class="cta-contact-item"><span class="ci">📍</span><p>Ward No. 5, Gram Post Sipat Ujwal Nagar, Bilaspur, Chhattisgarh – 495555</p></div>
+    <div class="cta-contact-item"><span class="ci">📞</span><p>+91 626 730 9902</p></div>
+    <div class="cta-contact-item"><span class="ci">✉️</span><p>support@inamigosfoundation.org.in</p></div>
+    <div class="cta-contact-item"><span class="ci">🌐</span><p>inamigosfoundation.org.in</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">InAmigos Foundation · Uniting Minds For Change</div>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/inamigos.inamigos" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/inamigos/" target="_blank">Instagram</a>
+    <a href="https://in.linkedin.com/company/inamigos-foundation" target="_blank">LinkedIn</a>
+  </div>
+  <div style="font-size:.78rem">© 2026 InAmigos Foundation · Section 8 Registered NGO</div>
+</footer>
+
+</body>
+</html>
